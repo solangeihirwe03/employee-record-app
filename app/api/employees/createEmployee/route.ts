@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import employeeController from "@/app/controllers/employeeController";
 import employeeModel from "@/app/models/employee";
+import dbConnect from "@/app/utils/dbConnect";
 
 export async function POST(request: Request){
     try {
+        await dbConnect()
         const {firstName, lastName, email, phone, role} = await request.json();
 
         if (!firstName || !lastName || !email || !phone || !role) {

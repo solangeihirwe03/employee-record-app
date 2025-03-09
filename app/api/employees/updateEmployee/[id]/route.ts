@@ -1,16 +1,17 @@
 import { NextResponse } from "next/server";
 import employeeController from "@/app/controllers/employeeController";
-import dbConnect from "@/app/utils/dbConnect";
 
-export async function GET(){
+export async function PUT(request: Request, {params}:{params: {id:string}}) {
     try{
-        await dbConnect()
-        const employees = await employeeController.getEmployees();
+        const {id} = params
+        const body = await request.json();
+
+        const updatedEmployee = await employeeController.updateEmployee(id, body);
         return NextResponse.json({
             status: 200,
-            data: {employees}
+            data: {updatedEmployee}
         })
-    }catch(error: any){
+    }catch(error:any){
         return NextResponse.json({
             status: 500,
             error: error.message
