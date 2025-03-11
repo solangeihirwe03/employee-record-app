@@ -1,9 +1,9 @@
 import employeeController from "@/app/controllers/employeeController";
 import { NextResponse } from "next/server";
 
-export async function GET(request:Request, {params}: {params: {id:string}}) {
+export async function GET(request:Request, content: any) {
     try{
-        const {id} = params;
+        const {id} = content?.params?.id;
         const employee = await employeeController.getEmployeeById(id);
 
         return NextResponse.json({

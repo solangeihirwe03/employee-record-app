@@ -39,13 +39,13 @@ const EmployeesPage = () => {
 
     const handleChange = () => {
         if (selectedEmployees) {
-            router.push(`/update/${selectedEmployees}`);
+            router.push(`employees/update/${selectedEmployees}`);
         } else {
             alert("Please select an employee!");
         }
     };
     return (
-        <div className='text-gray-600'>
+        <div className='text-gray-600 px-10'>
             <div className='min-w-full flex justify-between px-3 py-3'>
                 <h1>Employees</h1>
                 <Link
@@ -62,7 +62,7 @@ const EmployeesPage = () => {
             <div className="p-4">
                 <button
                     onClick={handleChange}
-                    className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+                    className="bg-[#2BDA53] text-white px-4 py-2 rounded mb-4"
                 >
                     Change
                 </button>
@@ -111,4 +111,4 @@ const EmployeesPage = () => {
             )
 }
 
-            export default EmployeesPage
+export default EmployeesPage

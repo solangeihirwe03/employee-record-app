@@ -1,9 +1,9 @@
 import employeeController from "@/app/controllers/employeeController";
 import { NextResponse } from "next/server";
 
-export async function DELETE(request: Request, {params}: {params: {id: string}}) {
+export async function DELETE(request: Request, content: any) {
     try{
-        const {id} = params;
+        const {id} = content?.params?.id;
         await employeeController.deleteEmployee(id);
         return NextResponse.json({status: 200, message: "Employee deleted successfully!"})
     }catch(error: any){

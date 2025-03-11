@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "./components/header";
+import SideBar from "./components/sideBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +26,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <head>
+        {/* You can add your head content like meta tags, title, etc. here */}
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Employee Management</title>
+      </head>
+      <body>
+        <div style={{ display: 'flex' }}>
+          <SideBar />
+          <div style={{ flex: 1 }}>
+            <Header />
+            <main>{children}</main>
+          </div>
+        </div>
       </body>
     </html>
   );

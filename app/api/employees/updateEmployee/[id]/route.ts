@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import employeeController from "@/app/controllers/employeeController";
 
-export async function PUT(request: Request, {params}:{params: {id:string}}) {
+export async function PUT(request: Request, content: any) {
     try{
-        const {id} = params
+        const {id} = content?.params?.id
         const body = await request.json();
 
         const updatedEmployee = await employeeController.updateEmployee(id, body);
